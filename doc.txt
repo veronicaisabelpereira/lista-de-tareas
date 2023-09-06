@@ -1,0 +1,66 @@
+***Carpeta src: 
+index.html, index.ts e index.css
+state
+components y pages
+components: card
+Pages: home
+//////////////////////////////////////////
+STATE 
+FUNCION: Guardar la informacion y proveer de metodos para acceder a la misma
+METODOS: 
+Comunes con otros stages:
+getState(), setState(), subscribe()
+otros:
+init()---vincula al stage con el localStorage
+getEnabledTasks()
+addTask()
+changeItemState()
+Estos 3 ultimos viculan las tareas al stage,
+mostrando las disponibles, agregando o cambiendo su estado.
+---------
+//////////COMPONENTES: CARDS//////////
+initCardComponent()inicializa una clase(CardComp) para el custom element todo-card.
+Tiene como propiedades: shadow, text, checked, id
+En su constructor llama a super() y crea el shadow
+**METODOS:**********
+
+**connectedCallback()*
+se ejecuta al iniciar el componente.: 
+Setea las propiedades text, checked y id
+-Asigna a la propiedad text el valor de this.textContent 
+o avisa que no le pasaron texto.
+-Asigna a la propiedad checked el valor del atributo checked, 
+true si lo tiene, false si no lo tiene.
+-Asigna a la propiedad id lo que se le pasa por atributo.
+-Ejecuta render()
+
+//////////
+**render()**
+Renderiza el elemento card. 
+El mismo esta compuesto por:
+-Un <p> que recibe el texto de la tarea ingresada por usuario
+este mismo lo consume del state.
+-Un <div class="buttons-container"> que contendra :
+un input check: recibira del state si contiene checked o no.
+un boton de borrado dentro de un div
+-Un div warning que tendra 2 botones: Para aceptar o cancelar el borrado.
+--
+-Pasa por un if que evalua si esta checkeada la tarea o no,
+en caso de estar checkeada aplica la clase "line-through" al card-text--
+--
+-Adjunta la hoja de estilos y el div card al shadow
+-Ejecuta la funcion button()
+//////////
+**button()**
+Esta funcion contendra otras funciones que escucharan eventos vinculados
+a lo que el usuario decida: Tarea completa, borrar tarea.
+-Primero selecciona los elementos y los guarda en constantes
+-Genera sobre los diferentes elementos escuchas de eventos para realizar diferentes acciones:
+Mostrar o ocultar tareas, setear estado, mostrar carter de advertencia
+
+
+TAREAS 1/9
+
+personalizar
+proyectar en subir la version propia: en github primero
+volver a ver tutorial de como hacer con github page y el blind
